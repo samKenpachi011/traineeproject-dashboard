@@ -15,6 +15,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+APP_NAME = 'traineeproject_dashboard'
+
 
 # Application definition
 
@@ -25,7 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'esr21_dashboard.apps.AppConfig',
+    'traineeproject_dashboard.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
 
 ]
@@ -114,6 +116,5 @@ STATIC_URL = '/static/'
 DASHBOARD_URL_NAMES = {
     'screening_listboard_url': 'traineeproject_dashboard:screening_listboard_url',
     'subject_listboard_url': 'traineeproject_dashboard:subject_listboard_url',
-    'subject_dashboard_url': 'tp_dashboard:subject_dashboard_url',
-
+    'subject_dashboard_url': 'traineeproject_dashboard:subject_dashboard_url',
 }
