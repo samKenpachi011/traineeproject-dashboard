@@ -18,7 +18,7 @@ setup(
     author_email='samuelkabelo1@gmail.com',
     packages=find_packages(),
     include_package_data=True,
-    url='',
+    url='https://github.com/samKenpachi011/traineeproject-dashboard',
     license='GPL license, see LICENSE',
     description='Traineeproject dashboard.',
     long_description=README,
