@@ -27,8 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'traineeproject_dashboard.apps.AppConfig',
+    'django_crypto_fields.apps.AppConfig',
+    'edc_action_item.apps.AppConfig',
+    'edc_data_manager.apps.AppConfig',
+    'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
+    'edc_protocol.apps.AppConfig',
+    'traineeproject_dashboard.apps.AppConfig',
 
 ]
 
@@ -40,6 +45,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'edc_subject_dashboard.middleware.DashboardMiddleware',
+    'edc_dashboard.middleware.DashboardMiddleware',
+    'edc_lab_dashboard.middleware.DashboardMiddleware',
 ]
 
 ROOT_URLCONF = 'traineeproject_dashboard.urls'

@@ -10,7 +10,7 @@ from .subject_consent_model_wrapper import SubjectConsentModelWrapper
 class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
 
     consent_model_wrapper_cls = SubjectConsentModelWrapper
-    model = 'tp_screening.subjectscreening'
+    model = 'traineeproject_subject.subjectscreening'
     next_url_attrs = ['screening_identifier']
     next_url_name = settings.DASHBOARD_URL_NAMES.get('screening_listboard_url')
     querystring_attrs = ['gender']
