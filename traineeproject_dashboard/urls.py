@@ -51,6 +51,3 @@ if settings.APP_NAME == 'traineeproject_dashboard':
         path('edc_lab/', include('edc_lab.urls')),
         path('edc_lab_dashboard/', include('edc_lab_dashboard.urls')),
         path(r'', RedirectView.as_view(url='admin/'), name='home_url')] 
-urlpatterns = [
-
-]
