@@ -21,6 +21,8 @@ traineeproject_dashboard.append_item(
         name='traineeproject_subject',
         label='Subjects',
         fa_icon='far fa-user-circle',
-        url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
+        url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url'),
+        no_url_namespace=no_url_namespace
+        ))
 
 site_navbars.register(traineeproject_dashboard)        

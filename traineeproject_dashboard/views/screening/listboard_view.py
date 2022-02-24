@@ -20,7 +20,7 @@ class ListBoardView(NavbarViewMixin, EdcBaseViewMixin, ListboardFilterViewMixin,
     listboard_fa_icon = "fa-user-plus"
     model = 'traineeproject_subject.screeningeligibility'
     model_wrapper_cls = SubjectScreeningModelWrapper
-    navbar_name = 'esr21_dashboard'
+    navbar_name = 'traineeproject_dashboard'
     navbar_selected_item = 'eligible_subject'
     ordering = '-modified'
     paginate_by = 10

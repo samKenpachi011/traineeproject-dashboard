@@ -1,2 +1,3 @@
 from .subject_consent_model_wrapper import SubjectConsentModelWrapper
-from .subject_screening_model_wrapper import SubjectScreeningModelWrapper
+from .screening_model_wrapper import SubjectScreeningModelWrapper
+from .contact_information_model_wrapper import ContactInformationModelWrapper

@@ -23,8 +23,6 @@
     <th>Subject Identifier</th>
     <th>Age</th>
     <th>User</th>
-    <th>Modified</th>
-    <th>Host</th>
     <!-- end results header -->
 {% endblock listboard_table_header %}
 
@@ -32,9 +30,32 @@
 {% block listboard_table_button_column %}
     <td style="white-space: nowrap">
     <div class="btn-group">
+
+        {% eligibility_confirmation_button result %}
+        {% if not result.is_eligible %}
+            {% eligibility_button result %}
+
+        {% endif %}
+
+        {% if result.is_eligible %}
+            {% consent_button result %}
+           
+        {% endif %}
+    
+    </div>
+    </td>
+{% endblock listboard_table_button_column %}
+{% comment %} testing the above  {% endcomment %}
+
+
+{% comment %} 
+
+{% block listboard_table_button_column %}
+    <td style="white-space: nowrap">
+    <div class="btn-group">
     {% screening_button result %}
     {% eligibility_button result %}
-    {% if result.eligible %}
+    {% if result.is_eligible %}
         {% if result.consent %}
             {% dashboard_button result %}
         {% else %}
@@ -44,6 +65,14 @@
     </div>
     </td>
 {% endblock listboard_table_button_column %}
+{% if result.is_eligible %}
+        {% if result.is_consented %}
+            {% dashboard_button result %}
+        {% else %}
+            {% consent_button result %}
+        {% endif %}
+    {% endif %}
+{% endcomment %}
 
 
 {% block listboard_table_columns %}
@@ -52,7 +81,5 @@
     <td nowrap>{% if "092" in result.consent.subject_identifier %}{{ result.consent.subject_identifier }}{% endif %}</td>
     <td nowrap>{{ result.age_in_years }} yrs</td>
     <td nowrap>{{ result.user_created }}</td>
-    <td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>  
-    <td nowrap>{{ result.hostname_created }}</td>
 
 {% endblock listboard_table_columns %}

@@ -1,8 +1,7 @@
 {% extends 'edc_subject_dashboard/dashboard.html' %}
+{% load static %}
+{% load traineeproject_dashboard_extras %}
 
-{% load staticfiles %}
-
-{% block locator_information %}{% endblock locator_information %}
 
 {% block top_bar %}
 
@@ -17,12 +16,24 @@
     <div class="panel panel-default">
       <div class="panel-heading">
           <h6 class="panel-title">
-              <i class="fa fa-random fa-lg fa-fw"></i> Randomization
+              <i class="fa fa-random fa-lg fa-fw"></i> Locator Info
           </h6>
       </div>
-      <div id="treatment-panel" class="panel-body">
-	      <span class="text text-default"><small>{{ treatment_description }}</small></span>
-      </div>           
+      
   </div>
     </div>
 {% endblock side_bar %}
+
+
+{% block other_special_buttons %}
+
+
+{% endblock other_special_buttons %}
+	
+{% block visit_schedules_panel %}
+
+{% endblock visit_schedules_panel %}
+
+{% block dashboard_schedule_footer %}
+
+{% endblock dashboard_schedule_footer %}
