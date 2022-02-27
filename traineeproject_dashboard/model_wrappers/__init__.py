@@ -1,3 +1,6 @@
 from .subject_consent_model_wrapper import SubjectConsentModelWrapper
 from .screening_model_wrapper import SubjectScreeningModelWrapper
 from .contact_information_model_wrapper import ContactInformationModelWrapper
+from .subject_visit_model_wrapper import SubjectVisitModelWrapper
+from .appointment_model_wrapper import AppointmentModelWrapper
+from .subject_offstudy_model_wrapper import SubjectOffStudyModelWrapper

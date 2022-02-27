@@ -18,7 +18,7 @@ traineeproject_dashboard.append_item(
 
 traineeproject_dashboard.append_item(
     NavbarItem(
-        name='traineeproject_subject',
+        name='consented_subject',
         label='Subjects',
         fa_icon='far fa-user-circle',
         url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url'),
