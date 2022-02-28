@@ -1,0 +1,50 @@
+<div id="locator-panel" class="panel-collapse collapse in">
+
+    <div class="list-group">
+
+        <a class="list-group-item">
+
+            <span class="text text-default">
+                <small>
+                    <b>May Follow Up? </b> {{ locator_obj.may_call }} <br><br>
+                    <b>Home Visits? </b>  {{ locator_obj.may_visit_home }} <br><br>
+                    {% comment %} create a check and add address and cell {% endcomment %}
+                    {% if locator_obj.may_visit_home == YES %}
+	      		        Address:   {{locator_obj.physical_address}}  <br> <br>
+	            	{% endif %}
+                    {% if locator_obj.may_call == YES %}
+                    Tel:	{{locator_obj.subject_cell}}	<br>
+
+
+                    {% endif %}
+
+
+                    <b>Contact next of kin? </b>
+                    <b>Health Post or Clinic: </b>
+                    <b>Home Village </b> 
+                        <br>
+                        {% if locator_obj.user_modified %}
+                            Updated on {{ locator_obj.modified|date:"SHORT_DATE_FORMAT" }} by {{ locator_obj.user_modified }}
+                        
+                        {% else %}
+                            Created on {{ locator_obj.created|date:"SHORT_DATE_FORMAT" }} by {{ locator_obj.user_created }}
+                        {% endif %}
+
+
+                    {% comment %} check when updated and created {% endcomment %}
+                    <br>
+                    {% if locator_obj.user_modified %}
+                        Updated on {{ locator_obj.modified|date:"SHORT_DATE_FORMAT" }} by {{ locator_obj.user_modified }}
+                    
+                    {% else %}
+                        Created on {{ locator_obj.created|date:"SHORT_DATE_FORMAT" }} by {{ locator_obj.user_created }}
+                    {% endif %}
+
+
+                </small>
+            </span>
+        </a>
+
+
+    </div>
+</div>    
