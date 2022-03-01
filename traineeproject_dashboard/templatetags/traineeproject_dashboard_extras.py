@@ -14,14 +14,27 @@ def consent_button(model_wrapper):
         consent_version=consent_version,
         title=' '.join(title))
 
-@register.inclusion_tag('traineeproject_dashboard/buttons/screening_button.html')
-def screening_button(model_wrapper):
+@register.inclusion_tag('traineeproject_dashboard/buttons/screening_eligibility_button.html')
+def screening_eligibility_button(model_wrapper):
     title = ['Edit subject\' screening form.']
     return dict(
-        screening_identifier=model_wrapper.object.screening_identifier,
-        href=model_wrapper.href,
-        title=' '.join(title))
+        # screening_identifier=model_wrapper.object.screening_identifier,
+        add_screening_href=model_wrapper.screening.href,
+        screening=model_wrapper.screening,
+        screening_model_obj=model_wrapper.screening_model_obj)
 
+@register.inclusion_tag('traineeproject_dashboard/buttons/screening_ineligible_button.html')
+def screening_ineligibility_button(subject_screening_model_wrapper):
+    comment = []
+    obj = subject_screening_model_wrapper.object
+    tooltip = None
+    if not obj.is_eligible:
+        comment = obj.reason_for_ineligibility.split(',')
+    comment = list(set(comment))
+    comment.sort()
+    return dict(eligible=obj.is_eligible, comment=comment, tooltip=tooltip)
+
+    
 
 @register.inclusion_tag('traineeproject_dashboard/buttons/eligibility_button.html')
 def eligibility_button(subject_screening_model_wrapper):

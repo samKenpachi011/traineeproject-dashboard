@@ -134,7 +134,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# TODO:  DASHBOARD_URL_NAMES + DASHBOARD_BASE_TEMPLATES
 DASHBOARD_URL_NAMES = {
     'screening_listboard_url': 'traineeproject_dashboard:screening_listboard_url',
     'subject_listboard_url': 'traineeproject_dashboard:subject_listboard_url',

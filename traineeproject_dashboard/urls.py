@@ -31,6 +31,10 @@ subject_dashboard_url_config = UrlConfig(
     identifier_label='subject_identifier',
     identifier_pattern=subject_identifier)
 
+
+path('main_schedule_enrollment',SubjectDashboardView.as_view())
+path('sub_cohort_schedule_enrollment',SubjectDashboardView.as_view())
+
 urlpatterns = []
 urlpatterns += subject_listboard_url_config.listboard_urls
 urlpatterns += screening_listboard_url_config.listboard_urls

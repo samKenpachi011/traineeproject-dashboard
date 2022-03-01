@@ -6,9 +6,9 @@ from edc_consent import ConsentModelWrapperMixin
 from edc_base.utils import get_uuid
 
 from .subject_consent_model_wrapper import SubjectConsentModelWrapper
+from .screening_model_wrapper_mixin import ScreeningModelWrapperMixin
 
-
-class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
+class SubjectScreeningModelWrapper(ScreeningModelWrapperMixin,ConsentModelWrapperMixin, ModelWrapper):
 
 
     consent_model_wrapper_cls = SubjectConsentModelWrapper

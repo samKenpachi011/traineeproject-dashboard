@@ -1,11 +1,11 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
+from .screening_eligibilty_model_wrapper import ScreeningEligibilityModelWrapper
+# from .screening_model_wrapper import SubjectScreeningModelWrapper
 
-from .screening_model_wrapper import SubjectScreeningModelWrapper
-
-class SubjectScreeningModelWrapperMixin:
+class ScreeningModelWrapperMixin:
     
-    screening_model_wrapper_cls = SubjectScreeningModelWrapper
+    screening_model_wrapper_cls = ScreeningEligibilityModelWrapper
     
     @property
     def screening_model_obj(self):
@@ -19,7 +19,7 @@ class SubjectScreeningModelWrapperMixin:
     def screening(self):
         model_obj = self.screening_model_obj or self.screening_cls(
             **self.create_screening_cls_options)
-        return SubjectScreeningModelWrapper(model_obj=model_obj)
+        return self.screening_model_wrapper_cls(model_obj=model_obj)
         
     @property
     def screening_cls(self):

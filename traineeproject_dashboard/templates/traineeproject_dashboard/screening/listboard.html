@@ -39,6 +39,17 @@
 
         {% if result.is_eligible %}
             {% consent_button result %}
+            {% if result.consent %}
+                {% if result.screening and not result.screening.object.is_eligible  %}{% endif %}
+
+                    {% screening_ineligibility_button result %}
+                {% else %} 
+                    {% screening_eligibility_button result %} 
+                    {% if result.screening %}
+                        {% dashboard_button result %}
+                    {% endif %}   
+
+                {% endif %}
            
         {% endif %}
     
