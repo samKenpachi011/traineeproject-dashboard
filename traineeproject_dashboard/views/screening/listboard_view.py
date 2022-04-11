@@ -14,6 +14,7 @@ from ...model_wrappers import SubjectScreeningModelWrapper
 
 class ListBoardView(NavbarViewMixin, EdcBaseViewMixin, ListboardFilterViewMixin,
                     SearchFormViewMixin, ListboardView):
+    
     listboard_template = 'screening_listboard_template'
     listboard_url = 'screening_listboard_url'
     listboard_panel_style = 'info'
@@ -26,7 +27,7 @@ class ListBoardView(NavbarViewMixin, EdcBaseViewMixin, ListboardFilterViewMixin,
     paginate_by = 10
     search_form_url = 'screening_listboard_url'
 
-    listboard_view_filters = CustomListboardViewFilters()
+    # listboard_view_filters = CustomListboardViewFilters()
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -49,5 +50,5 @@ class ListBoardView(NavbarViewMixin, EdcBaseViewMixin, ListboardFilterViewMixin,
         q = Q()
         if re.match('^[A-Z]+$', search_term):
             q = Q(first_name__exact=search_term)
-        return     
+        return q    
     

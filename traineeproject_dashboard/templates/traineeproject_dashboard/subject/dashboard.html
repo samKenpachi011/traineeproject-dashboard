@@ -3,6 +3,9 @@
 {% load traineeproject_dashboard_extras %}
 
 
+
+
+
 {% block top_bar %}
 
     {% include "traineeproject_dashboard/subject/dashboard/top_bar.html" %}
@@ -32,9 +35,63 @@
 {% endblock other_special_buttons %}
 	
 {% block visit_schedules_panel %}
+    {% for visit_schedule in  visit_schedules.values%}
+   
+        {% for schedule in visit_schedule.schedules.values %}
+            {% comment %} check if schedule is in schedule names {% endcomment %}
+            {% if schedule.name in schedule_names %}
+                {{ schedule.name|slugify }}
+                <div id="subject_dashboard_for_{{ visit_schedule.name|slugify }}-{{ schedule.name|slugify }}"
+                class="panel panel-{% if anonymous %}danger{% else %}info{% endif %}">
+                <div class="panel-heading">
+                    <i class="far fa-calendar fa-lg fa-fw"></i> 
+                    <a data-toggle="collapse" data-parent="#accordion_{{visit_schedule.name|slugify}}" aria-hidden="true"
+                    href="#subject_dashboard_appointments_for_{{ visit_schedule.name|slugify }}-{{ schedule.name|slugify }}">
+	                {{ visit_schedule.verbose_name }} <i class="fa fa-caret-right"></i> {{ schedule.verbose_name }} <span class="caret"></span>
+                    </a>
+                    <span class="text text-default pull-right"><small>
+                        {% if visit_code %}
+                        <i class="fa fa-spinner fa-fw" aria-hidden="true" data-toggle="tooltip" title="Appointment {{ visit_code }} is currently in progress"></i> {{ visit_code }}
+                       {% endif %}
+                        
+                    </small></span>             
+
+                </div>
+
+
+                <div id="subject_dashboard_appointments_for_{{ visit_schedule.name|slugify }}-{{ schedule.name|slugify }}"
+                    class="panel-collapse collapse {% if visit_code != None %}in{% endif %}">
+                
+        
+                    {% comment %} {% block appointments %}
+                        {% include "edc_subject_dashboard/dashboard/appointments.html" %}
+                    {% endblock appointments %} {% endcomment %}
+
+                    {% block appointments_panel %}
+
+                        {% include "traineeproject_dashboard/subject/dashboard/appointments.html" %}
+
+                    {% endblock appointments_panel %}
+
+                </div> 
+
+                {% comment %} {% block appointments_schedule_footer %}
+
+                    {% subject_schedule_footer_row subject_identifier visit_schedule schedule subject_dashboard_url %}
+                {% endblock appointments_schedule_footer %}	      {% endcomment %}
+
+            </div>
+
+            {% endif %}
+
+        {% endfor %} 
+    {% endfor %}
 
 {% endblock visit_schedules_panel %}
 
-{% block dashboard_schedule_footer %}
 
-{% endblock dashboard_schedule_footer %}
+
+{% comment %} 
+{% block dashboard_schedule_footer %}
+{% subject_schedule_footer_row subject_identifier visit_schedule schedule subject_dashboard_url %}
+{% endblock dashboard_schedule_footer %} {% endcomment %}
